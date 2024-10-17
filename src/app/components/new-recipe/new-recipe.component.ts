@@ -10,22 +10,23 @@ import { Router } from '@angular/router';
 })
 export class NewRecipeComponent {
   recipeName: string = '';
+  recipeCreator: string = '';
   recipeContent: string = '';
 
   constructor(private commonService: CommonService, private router: Router) {}
 
   onSaveRecipe(): void {
-    if (!this.recipeName || !this.recipeContent) {
-      alert('Both Recipe Name and Recipe Content are required!');
+    if (!this.recipeName || !this.recipeContent || !this.recipeCreator) {
+      alert('Recipe Name, Recipe Creator, and Recipe Content are required to save a recipe!');
       return;
     }
 
     const newRecipe: RecipeDTO = {
       recipeName: this.recipeName,
-      recipeContent: this.recipeContent
+      recipeContent: this.recipeContent,
+      recipeCreator: this.recipeCreator
     };
 
-    // Placeholder for saving the recipe (to be implemented later)
     this.commonService.postObject('recipeBankController/saveRecipe', newRecipe);
     this.router.navigate(['/search-recipes']);
   }

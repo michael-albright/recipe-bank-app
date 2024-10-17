@@ -5,8 +5,13 @@
       </button>
       <div class="card-content">
         <div class="form-group">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Recipe Name" [(ngModel)]="recipeName">
+          <div class="input-row"> <!-- New wrapper to handle side-by-side inputs -->
+            <div class="input-group recipe-name-group">
+              <input type="text" class="form-control recipe-name" placeholder="Recipe Name" [(ngModel)]="recipeName">
+            </div>
+            <div class="input-group recipe-creator-group">
+              <input type="text" class="form-control recipe-creator" placeholder="Recipe Creator" [(ngModel)]="recipeCreator">
+            </div>
           </div>
           <div class="input-group">
             <textarea class="form-control text-area" placeholder="Recipe Content" [(ngModel)]="recipeContent"></textarea>

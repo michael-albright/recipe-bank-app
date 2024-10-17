@@ -27,8 +27,24 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    width: 75%; /* Combined width of both inputs (3/4 width of textarea) */
+    margin-bottom: 10px;
+}
+
+.recipe-name-group {
+    flex: 3; /* Recipe Name input takes up more space */
+    margin-right: 10px;
+}
+
+.recipe-creator-group {
+    flex: 2; /* Recipe Creator input is slightly less wide */
 }
 
 .input-group {
@@ -47,6 +63,7 @@
 .save-button {
     margin-top: 20px;
     background-color: rgb(111, 130, 87);
+    align-self: center;
 }
 
 .home-button {

@@ -1,0 +1,18 @@
+<div class="new-container">
+    <div class="card-container">
+      <button class="home-button" routerLink="/">
+        <img src="/assets/images/home-link-logo.png" alt="Home">
+      </button>
+      <div class="card-content">
+        <div class="form-group">
+          <div class="header">
+            <h2>{{ recipeName }}</h2>
+          </div>
+          <div class="input-group">
+            <textarea class="form-control text-area" >{{ recipeData.recipeContent }}</textarea> <!--[(ngModel)]="recipeContent"--> 
+          </div>
+          <button class="btn btn-primary save-button" routerLink="/search-recipes">All Recipes</button>
+        </div>
+      </div>
+    </div>
+  </div>

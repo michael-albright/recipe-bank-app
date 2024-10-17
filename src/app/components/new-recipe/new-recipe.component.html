@@ -1,0 +1,18 @@
+<div class="new-container">
+    <div class="card-container">
+      <button class="home-button" routerLink="/">
+        <img src="/assets/images/home-link-logo.png" alt="Home">
+      </button>
+      <div class="card-content">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Recipe Name" [(ngModel)]="recipeName">
+          </div>
+          <div class="input-group">
+            <textarea class="form-control text-area" placeholder="Recipe Content" [(ngModel)]="recipeContent"></textarea>
+          </div>
+          <button class="btn btn-primary save-button" (click)="onSaveRecipe()">Save Recipe</button>
+        </div>
+      </div>
+    </div>
+  </div>

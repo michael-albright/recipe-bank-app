@@ -1,0 +1,59 @@
+.dashboard-container {
+    // Full-height and full-width container to center the card
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+  
+    // Background image setup
+    background-image: url('/assets/images/dried-chiles.jpg');  // Use relative path
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .card-container {
+    // Card styling with outer thin black border and rounded corners
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); // Slight transparency to show background
+  
+    // Inner border to make it pop
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Interior shadow to give depth
+  }
+  
+  .card-content {
+    // Padding inside the card for buttons
+    padding: 25px;
+  }
+  
+  .buttons-container {
+    // Flexbox for vertical alignment of buttons
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    // Space between the buttons
+    .large-button {
+      margin-bottom: 40px;
+    }
+  }
+  
+  .large-button {
+    // Customize the larger button
+    padding: 30px 80px;
+    font-size: 3rem;
+    background-color: rgb(110, 33, 33);
+    border-color: black;
+  }
+  
+  .small-button {
+    // Customize the smaller button
+    padding: 20px 60px;
+    font-size: 2rem;
+    background-color: rgb(111, 130, 87);
+    border-color: black;
+  }
+  

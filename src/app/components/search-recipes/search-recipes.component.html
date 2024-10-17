@@ -1,0 +1,36 @@
+<div class="search-container">
+  <div class="card-container">
+    <button class="home-button" routerLink="/">
+      <img src="/assets/images/home-link-logo.png" alt="Home">
+    </button>
+    <div class="card-content">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search Recipes" [(ngModel)]="searchTerm" (keyup.enter)="onSearch()">
+        <button class="btn btn-primary search-button" (click)="onSearch()">Search</button>
+      </div>
+      <div class="table-container">
+        <table class="table" *ngIf="recipes.length > 0">
+          <thead>
+            <tr>
+              <th>Recipe Name</th>
+              <th>Creation Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let recipe of recipes">
+              <td>
+                <a (click)="onSelectRecipe(recipe.recipeName)" class="clickable">
+                  {{ recipe.recipeName }}
+                </a>
+              </td>
+              <td>
+                {{ recipe.creationDate }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-primary refresh-button" (click)="getRecipeList()">All Recipes</button>
+    </div>
+  </div>
+</div>

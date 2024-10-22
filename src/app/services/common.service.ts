@@ -13,14 +13,13 @@ export class CommonService {
   constructor(private http: HttpClient) {}
 
   // Method to get an Object
-  getObject(targetPath: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.baseUrl}/${targetPath}`);
+  getObject(targetPath: string): Observable<RecipeDTO[]> {
+    const headers = new HttpHeaders({
+      'Accept': 'application/json',  // Specify JSON response expected
+    });
+    const url = `${this.baseUrl}/${targetPath}`;
+    return this.http.get<RecipeDTO[]>(url, { headers });
   }
-  
-  // Method to get an Object
-  // getStringListRcpNm(targetPath: string, recipeName: string): Observable<string[]> {
-  //   return this.http.get<string[]>(`${this.baseUrl}/${targetPath}?recipeName=${recipeName}`);
-  // }
 
   getObjectParam(targetPath: string, recipeName: string): Observable<any> {
     const headers = new HttpHeaders({

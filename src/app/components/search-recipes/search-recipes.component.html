@@ -9,15 +9,16 @@
         <button class="btn btn-primary search-button" (click)="onSearch()">Search</button>
       </div>
       <div class="table-container">
-        <table class="table" *ngIf="recipes.length > 0">
+        <table class="table" *ngIf="filteredRecipes.length > 0">
           <thead>
             <tr>
               <th>Recipe Name</th>
               <th>Creation Date</th>
+              <th>Recipe Creator</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let recipe of recipes">
+            <tr *ngFor="let recipe of filteredRecipes">
               <td>
                 <a (click)="onSelectRecipe(recipe.recipeName)" class="clickable">
                   {{ recipe.recipeName }}
@@ -25,6 +26,9 @@
               </td>
               <td>
                 {{ recipe.creationDate }}
+              </td>
+              <td>
+                {{ recipe.recipeCreator }}
               </td>
             </tr>
           </tbody>

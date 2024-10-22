@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonService } from '../../services/common.service';
-import { Recipe } from 'src/app/models/recipe';
 import { Router } from '@angular/router';
+import { RecipeDTO } from 'src/app/models/recipe-dto';
 
 @Component({
   selector: 'app-search-recipes',
@@ -12,10 +12,12 @@ export class SearchRecipesComponent implements OnInit {
   // EventEmitter to emit the selected recipe name
   // @Output() recipeSelected = new EventEmitter<string>();
 
-  recipes: Recipe[] = [];
+  recipes: RecipeDTO[] = [];
+  filteredRecipes: RecipeDTO[] = [];
   searchTerm: string = '';
   recipeName: string = '';
   creationDate: string = '';
+  recipeCreator: string = '';
 
   constructor(private commonService: CommonService, private router: Router) {}
 
@@ -26,7 +28,8 @@ export class SearchRecipesComponent implements OnInit {
   getRecipeList(): any {
     this.commonService.getObject('recipeBankController/getRecipeList').subscribe({
       next: (data) => {
-        this.createRecipeObject(data);
+        this.recipes = data;
+        this.filteredRecipes = data;
       },
       error: (error) => {
         console.error('Error fetching recipes:', error);
@@ -34,30 +37,26 @@ export class SearchRecipesComponent implements OnInit {
     });
   }
 
-  createRecipeObject(recipeList: any): any {
-    this.recipes = recipeList.map((recipeString: string) => {
-      const [recipeName, creationDate] = recipeString.split('|');
-      return { recipeName, creationDate };
-    });
+  onSearch(): void {
+    // UI handling search term
+    const term = this.searchTerm.trim().toLowerCase(); // Trim whitespace and convert to lowercase
+    this.filteredRecipes = this.recipes.filter(recipe =>
+      recipe.recipeName.toLowerCase().includes(term) // Case-insensitive search
+    );
   }
 
-  onSearch(): void {
-    if (this.searchTerm) {
-      this.commonService.getObjectParam('recipeBankController/searchRecipes', this.searchTerm).subscribe({
-        next: (filteredRecipes) => {
-          this.recipes = [];
-          this.createRecipeObject(filteredRecipes);
-        },
-        error: (error) => {
-          console.error('Error during search:', error);
-        },
-      });
-    }
-  }
+  // * Search recipes using the API
+      // this.commonService.getObjectParam('recipeBankController/searchRecipes', this.searchTerm).subscribe({
+      //   next: (filteredRecipes) => {
+      //     this.recipes = filteredRecipes;
+      //   },
+      //   error: (error) => {
+      //     console.error('Error during search:', error);
+      //   },
+      // });
 
   // Method to emit the selected recipe name
   onSelectRecipe(recipeName: string) {
-
     this.recipes.forEach(recipe => {
       if(recipe.recipeName == recipeName) {
         this.recipeName = recipe.recipeName;
@@ -68,5 +67,6 @@ export class SearchRecipesComponent implements OnInit {
     // this.recipeSelected.emit(s3RecipeName);
     this.router.navigate([ "/view-recipe", this.recipeName, this.creationDate ]);
   }
+
 }
 

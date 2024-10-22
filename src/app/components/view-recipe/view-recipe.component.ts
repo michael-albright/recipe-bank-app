@@ -28,7 +28,7 @@ export class ViewRecipeComponent implements OnInit {
   }
 
   getRecipe() {
-    const s3RecipeName = this.recipeName + '|' + this.creationDate;
+    const s3RecipeName = this.recipeName + '#' + this.creationDate;
     this.commonService.getObjectParam('recipeBankController/getRecipe', s3RecipeName).subscribe((data: any) => {
       this.recipeData.s3RecipeName = data.recipeName;
       this.recipeData.recipeContent = data.recipeContent;

@@ -12,6 +12,7 @@ export class NewRecipeComponent {
   recipeName: string = '';
   recipeCreator: string = '';
   recipeContent: string = '';
+  creationDate: any = null;
 
   constructor(private commonService: CommonService, private router: Router) {}
 
@@ -24,7 +25,8 @@ export class NewRecipeComponent {
     const newRecipe: RecipeDTO = {
       recipeName: this.recipeName,
       recipeContent: this.recipeContent,
-      recipeCreator: this.recipeCreator
+      recipeCreator: this.recipeCreator,
+      creationDate: this.creationDate
     };
 
     this.commonService.postObject('recipeBankController/saveRecipe', newRecipe);

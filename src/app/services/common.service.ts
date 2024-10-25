@@ -21,12 +21,12 @@ export class CommonService {
     return this.http.get<RecipeDTO[]>(url, { headers });
   }
 
-  getObjectParam(targetPath: string, recipeName: string): Observable<any> {
+  getObjectParam(targetPath: string, recipeName: string, creationDate: string): Observable<RecipeDTO> {
     const headers = new HttpHeaders({
       'Accept': 'application/json',  // Specify JSON response expected
     });
-    const url = `${this.baseUrl}/${targetPath}?recipeName=${encodeURIComponent(recipeName)}`;
-    return this.http.get<any>(url, { headers });
+    const url = `${this.baseUrl}/${targetPath}?recipeName=${encodeURIComponent(recipeName)}&creationDate=${encodeURIComponent(creationDate)}`;
+    return this.http.get<RecipeDTO>(url, { headers });
   }
 
   postObject(targetPath: string, recipe: RecipeDTO): void {

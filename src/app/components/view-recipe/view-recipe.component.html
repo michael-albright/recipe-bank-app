@@ -4,12 +4,14 @@
         <img src="/assets/images/home-link-logo.png" alt="Home">
       </button>
       <div class="card-content">
-        <div class="form-group">
+        <div class="form-group" *ngIf="recipe">
           <div class="header">
-            <h2>{{ recipeName }}</h2>
+            <h2>{{ recipe.recipeName }}</h2>
           </div>
           <div class="input-group">
-            <textarea class="form-control text-area" >{{ recipeData.recipeContent }}</textarea> <!--[(ngModel)]="recipeContent"--> 
+            <p><strong>Creator:</strong> {{ recipe.recipeCreator }}</p>
+            <p><strong>Creation Date:</strong> {{ recipe.creationDate }}</p>
+            <textarea class="form-control text-area" >{{ recipe.recipeContent }}</textarea> <!--[(ngModel)]="recipeContent"--> 
           </div>
           <button class="btn btn-primary save-button" routerLink="/search-recipes">All Recipes</button>
         </div>

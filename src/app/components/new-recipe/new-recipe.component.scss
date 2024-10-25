@@ -34,18 +34,18 @@
 .input-row {
     display: flex;
     justify-content: space-between;
-    width: 75%; /* Combined width of both inputs (3/4 width of textarea) */
+    width: 100%;
     margin-bottom: 10px;
 }
 
 .recipe-name-group {
-    flex: 3; /* Recipe Name input takes up more space */
+    // flex: 3;
     margin-right: 10px;
 }
 
-.recipe-creator-group {
-    flex: 2; /* Recipe Creator input is slightly less wide */
-}
+// .recipe-creator-group {
+//     // flex: 3;
+// }
 
 .input-group {
     width: 100%;

@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'search-recipes', component: SearchRecipesComponent },
   { path: 'new-recipe', component: NewRecipeComponent },
-  { path: 'view-recipe/:recipeName/:creationDate', component: ViewRecipeComponent },
+  { path: 'view-recipe', component: ViewRecipeComponent },
 ];
 
 @NgModule({

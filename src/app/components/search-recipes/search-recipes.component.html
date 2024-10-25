@@ -20,7 +20,7 @@
           <tbody>
             <tr *ngFor="let recipe of filteredRecipes">
               <td>
-                <a (click)="onSelectRecipe(recipe.recipeName)" class="clickable">
+                <a (click)="onSelectRecipe(recipe)" class="clickable">
                   {{ recipe.recipeName }}
                 </a>
               </td>

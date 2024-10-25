@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonService } from '../../services/common.service';
 import { Router } from '@angular/router';
 import { RecipeDTO } from 'src/app/models/recipe-dto';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
   selector: 'app-search-recipes',
@@ -9,17 +10,12 @@ import { RecipeDTO } from 'src/app/models/recipe-dto';
   styleUrls: ['./search-recipes.component.scss']
 })
 export class SearchRecipesComponent implements OnInit {
-  // EventEmitter to emit the selected recipe name
-  // @Output() recipeSelected = new EventEmitter<string>();
 
   recipes: RecipeDTO[] = [];
   filteredRecipes: RecipeDTO[] = [];
   searchTerm: string = '';
-  recipeName: string = '';
-  creationDate: string = '';
-  recipeCreator: string = '';
 
-  constructor(private commonService: CommonService, private router: Router) {}
+  constructor(private commonService: CommonService, private router: Router, private recipeService: RecipeService, ) {}
 
   ngOnInit(): void {
      this.getRecipeList();
@@ -39,9 +35,9 @@ export class SearchRecipesComponent implements OnInit {
 
   onSearch(): void {
     // UI handling search term
-    const term = this.searchTerm.trim().toLowerCase(); // Trim whitespace and convert to lowercase
+    const term = this.searchTerm.trim().toLowerCase();
     this.filteredRecipes = this.recipes.filter(recipe =>
-      recipe.recipeName.toLowerCase().includes(term) // Case-insensitive search
+      recipe.recipeName.toLowerCase().includes(term)
     );
   }
 
@@ -56,16 +52,11 @@ export class SearchRecipesComponent implements OnInit {
       // });
 
   // Method to emit the selected recipe name
-  onSelectRecipe(recipeName: string) {
-    this.recipes.forEach(recipe => {
-      if(recipe.recipeName == recipeName) {
-        this.recipeName = recipe.recipeName;
-        this.creationDate = recipe.creationDate;
-        console.log('s3RecipeName = ' + recipe.recipeName + '|' + recipe.creationDate);
-      }
-    })
-    // this.recipeSelected.emit(s3RecipeName);
-    this.router.navigate([ "/view-recipe", this.recipeName, this.creationDate ]);
+  onSelectRecipe(recipe: RecipeDTO) {
+    console.log("Recipe Name: " + recipe.recipeName)
+    // Store the selected recipe in the shared service
+    this.recipeService.selectRecipe(recipe);
+    this.router.navigate(['/view-recipe']);
   }
 
 }

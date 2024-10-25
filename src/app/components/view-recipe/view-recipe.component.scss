@@ -21,7 +21,9 @@
 }
 
 .card-content {
+    width: 100%; 
     padding: 40px;
+    text-align: center; 
 }
 
 .form-group {
@@ -38,6 +40,19 @@
     align-items: center;
     margin-bottom: 15px;
 }
+
+.secondary-headers {
+    display: flex;
+    justify-content: center; /* Centers items horizontally within the container */
+    align-items: center; /* Centers items vertically within the container */
+    gap: 20px; /* Adds space between Creator and Creation Date */
+    width: 100%; /* Ensures full width for centering alignment */
+    margin-bottom: 15px; /* Adjust as needed */
+}
+
+// .creator-header {
+//     margin-right: 10px;
+// }
 
 .text-area {
     width: 100%;

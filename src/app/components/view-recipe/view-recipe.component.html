@@ -9,8 +9,10 @@
             <h2>{{ recipe.recipeName }}</h2>
           </div>
           <div class="input-group">
-            <p><strong>Creator:</strong> {{ recipe.recipeCreator }}</p>
-            <p><strong>Creation Date:</strong> {{ recipe.creationDate }}</p>
+            <div class="secondary-headers">
+              <p class="creator-header"><strong>Creator:</strong> {{ recipe.recipeCreator }}</p>
+              <p><strong>Creation Date:</strong> {{ recipe.creationDate }}</p>
+            </div>
             <textarea class="form-control text-area" >{{ recipe.recipeContent }}</textarea> <!--[(ngModel)]="recipeContent"--> 
           </div>
           <button class="btn btn-primary save-button" routerLink="/search-recipes">All Recipes</button>
